@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
+$font-family: 'IBM Plex Sans', sans-serif;
+
+$body-bg: #141a30;
+$body-bg-hover: #0091E7;
+
+body {
+	background: $body-bg;
+	margin: 0;
+	z-index: 0;
+}
+
+.flex_group {
+	background-color: #fefefe;
+	border: none;
+	border-width: 0;
+	border-radius: 6px;
+	box-shadow: 0 0 0.3rem 0.001rem #999;
+	display: flex;
+	flex-direction: column;
+	font-family: $font-family;
+	margin: 1rem;
+	padding: 40px 40px 40px 40px;
+
+	h1 {
+		margin: 0;
+		padding: 0.6rem 0 0.2rem 0;
+	}
+
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+
+	.block_group {
+		display: block;
+	}
+	.flex_group {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	input[type=text], input[type=email], input[type=password] {
+		flex: 3;
+		font-size: 14px;
+		margin: 0.4rem 0 1rem 0;
+		padding: 14px 8px;
+	}
+	input[type=checkbox] {
+		margin: 0 0.7rem 0 0.4rem;
+	}
+
+	label {
+		flex: 1;
+	}
+}
+
+.canvas_group {
+	background-color: #fefefe;
+	border: none;
+	border-width: 0;
+	border-radius: 6px;
+	box-shadow: 0 0 0.3rem 0.001rem #999;
+	font-family: $font-family;
+	margin: 1rem;
+	padding: 40px 40px 40px 40px;
+}

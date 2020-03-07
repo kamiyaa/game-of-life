@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+		<title>Game of Life</title>
+	</head>
+	<body>
+		<noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+		<div
+			class="flex_group">
+			<h1>The Game of Life</h1>
+			<p>A Webassembly game written with Rust and Javascript</p>
+			<h3>Rules:</h3>
+			<ul>
+			<li>Any live cell with fewer than two live neighbours</li>
+			<li>Any live cell with two or three live neighbours</li>
+			<li>Any live cell with more than three live</li>
+			<li>Any dead cell with exactly three live neighbours</li>
+			</ul>
+			<h3>Instructions:</h3>
+			<ol>
+			<li>Create a grid</li>
+			<li>Use mouse to draw all initial live cells</li>
+			<li>Press play/pause to see the generations progress</li>
+			<li>Change the update interval to speed up or slow down</li>
+			</ol>
+
+			<label for="CanvasWidth">Width:</label>
+			<input
+				id="CanvasWidth"
+				type="number"
+				value="64"></input>
+			<label for="CanvasHeight">Height:</label>
+			<input
+				id="CanvasHeight"
+				type="number"
+				value="64"></input>
+			<label for="CanvasUpdateInterval">Update Interval (ms):</label>
+			<input
+				id="CanvasUpdateInterval"
+				type="number"
+				value="100"></input>
+			<div>
+			<button
+				id="CreateCanvas"
+				>Create</button>
+			<button id="play-pause"></button>
+			</div>
+		</div>
+		<div
+			class="canvas_group">
+			<canvas id="game-of-life-canvas"></canvas>
+		</div>
+		<script src="./bootstrap.js"></script>
+	</body>
+</html>
