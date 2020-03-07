@@ -12,15 +12,15 @@
 			<p>A Webassembly game written with Rust and Javascript</p>
 			<h3>Rules:</h3>
 			<ul>
-			<li>Any live cell with fewer than two live neighbours</li>
-			<li>Any live cell with two or three live neighbours</li>
-			<li>Any live cell with more than three live</li>
-			<li>Any dead cell with exactly three live neighbours</li>
+			<li>Any living cell with fewer than two living neighbours dies</li>
+			<li>Any living cell with two or three living neighbours lives onto the next generation</li>
+			<li>Any living cell with more than three live dies</li>
+			<li>Any dead cell with exactly three living neighbours</li>
 			</ul>
 			<h3>Instructions:</h3>
 			<ol>
 			<li>Create a grid</li>
-			<li>Use mouse to draw all initial live cells</li>
+			<li>Use mouse to draw the initial living cells</li>
 			<li>Press play/pause to see the generations progress</li>
 			<li>Change the update interval to speed up or slow down</li>
 			</ol>

@@ -126,6 +126,9 @@ const isPaused = () => {
 };
 
 const play = () => {
+	if (universe === null) {
+		return;
+	}
 	interval = document.getElementById("CanvasUpdateInterval").value;
 	paused = false;
 	playPauseButton.textContent = "Pause";
