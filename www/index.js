@@ -3,6 +3,8 @@ import { memory } from "wasm-game-of-life/wasm_game_of_life_bg";
 
 import "./index.scss";
 
+const CELL_SIZE = 15 | 0;
+
 const canvas = document.getElementById("game-of-life-canvas");
 const ctx = canvas.getContext('2d');
 
