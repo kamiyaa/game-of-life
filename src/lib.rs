@@ -1,12 +1,17 @@
 mod utils;
 
 use std::fmt;
-use web_sys::console;
 use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
 
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+
+const CELL_SIZE: u32 = 15;
+const GRID_COLOR: &'static str = "#606fbc";
+const ALIVE_COLOR: &'static str = "#606fbc";
+const DEAD_COLOR: &'static str = "#FFFFFF";
 
 #[wasm_bindgen]
 #[repr(u8)]
@@ -35,6 +40,8 @@ impl Cell {
 
 #[wasm_bindgen]
 pub struct Universe {
+    canvas_name: String,
+    context: web_sys::CanvasRenderingContext2d,
     width: u32,
     height: u32,
     cells: Vec<Cell>,
@@ -42,8 +49,40 @@ pub struct Universe {
 
 #[wasm_bindgen]
 impl Universe {
+    pub fn new(canvas_name: String, width: u32, height: u32) -> Self {
+        let cells = (0..width * height)
+            .map(|i| Cell::Dead)
+            .collect();
+
+        let document = web_sys::window().unwrap().document().unwrap();
+        let canvas = document.get_element_by_id(canvas_name.as_str()).unwrap();
+        let canvas: web_sys::HtmlCanvasElement = canvas
+            .dyn_into::<web_sys::HtmlCanvasElement>()
+            .map_err(|_| ())
+            .unwrap();
+
+        let context = canvas
+            .get_context("2d")
+            .unwrap()
+            .unwrap()
+            .dyn_into::<web_sys::CanvasRenderingContext2d>()
+            .unwrap();
+
+        Self {
+            canvas_name,
+            context,
+            width,
+            height,
+            cells,
+        }
+    }
+
     fn get_index(&self, row: u32, column: u32) -> usize {
         (row * self.width + column) as usize
+    }
+
+    fn get_context(&self) -> &web_sys::CanvasRenderingContext2d {
+        &self.context
     }
 
     fn live_neighbor_count(&self, row: u32, column: u32) -> u8 {
@@ -61,18 +100,6 @@ impl Universe {
             }
         }
         count
-    }
-
-    pub fn new(width: u32, height: u32) -> Self {
-        let cells = (0..width * height)
-            .map(|i| Cell::Dead)
-            .collect();
-
-        Self {
-            width,
-            height,
-            cells,
-        }
     }
 
     pub fn render(&self) -> String {
@@ -142,6 +169,53 @@ impl Universe {
 
         self.cells = next;
         changed
+    }
+
+    pub fn draw_grid(&self) {
+        let context = self.get_context();
+        context.begin_path();
+
+        for i in 0..self.width {
+            context.move_to((i * (CELL_SIZE + 1) + 1).into(), 0 as f64);
+            context.line_to((i * (CELL_SIZE + 1) + 1).into(),
+                    ((CELL_SIZE + 1) * self.height + 1).into());
+        }
+
+        for j in 0..self.height {
+            context.move_to(0 as f64, (j * (CELL_SIZE + 1) + 1).into());
+            context.line_to(((CELL_SIZE + 1) * self.width + 1).into(),
+                    (j * (CELL_SIZE + 1) + 1).into());
+        }
+
+        context.stroke();
+    }
+
+    pub fn draw_cells(&self) {
+        let alive_color: JsValue = JsValue::from_str(ALIVE_COLOR);
+        let dead_color: JsValue = JsValue::from_str(DEAD_COLOR);
+
+        let context = self.get_context();
+        context.begin_path();
+
+        for row in 0..self.height {
+            for col in 0..self.width {
+                let idx = self.get_index(row, col);
+
+                context.set_fill_style(if self.cells[idx] == Cell::Dead {
+                    &dead_color
+                } else {
+                    &alive_color
+                });
+
+                context.fill_rect(
+                    (col * (CELL_SIZE + 1) + 1).into(),
+                    (row * (CELL_SIZE + 1) + 1).into(),
+                    CELL_SIZE.into(),
+                    CELL_SIZE.into()
+                );
+            }
+        }
+        context.stroke();
     }
 }
 

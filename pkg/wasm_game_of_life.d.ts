@@ -9,11 +9,12 @@ export enum Cell {
 export class Universe {
   free(): void;
 /**
+* @param {string} canvas_name 
 * @param {number} width 
 * @param {number} height 
 * @returns {Universe} 
 */
-  static new(width: number, height: number): Universe;
+  static new(canvas_name: string, width: number, height: number): Universe;
 /**
 * @returns {string} 
 */
@@ -49,4 +50,10 @@ export class Universe {
 * @returns {boolean} 
 */
   tick(): boolean;
+/**
+*/
+  draw_grid(): void;
+/**
+*/
+  draw_cells(): void;
 }
