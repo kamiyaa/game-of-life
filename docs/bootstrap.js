@@ -121,6 +121,9 @@
 /******/ 					"__wbindgen_object_clone_ref": function(p0i32) {
 /******/ 						return installedModules["../pkg/wasm_game_of_life.js"].exports["__wbindgen_object_clone_ref"](p0i32);
 /******/ 					},
+/******/ 					"__wbg_random_c39492311093f0a8": function() {
+/******/ 						return installedModules["../pkg/wasm_game_of_life.js"].exports["__wbg_random_c39492311093f0a8"]();
+/******/ 					},
 /******/ 					"__wbindgen_debug_string": function(p0i32,p1i32) {
 /******/ 						return installedModules["../pkg/wasm_game_of_life.js"].exports["__wbindgen_debug_string"](p0i32,p1i32);
 /******/ 					},
@@ -228,7 +231,7 @@
 /******/ 				promises.push(installedWasmModuleData);
 /******/ 			else {
 /******/ 				var importObject = wasmImportObjects[wasmModuleId]();
-/******/ 				var req = fetch(__webpack_require__.p + "" + {"../pkg/wasm_game_of_life_bg.wasm":"5aeec086f215fad372ab"}[wasmModuleId] + ".module.wasm");
+/******/ 				var req = fetch(__webpack_require__.p + "" + {"../pkg/wasm_game_of_life_bg.wasm":"c59e2f3d17423c24be51"}[wasmModuleId] + ".module.wasm");
 /******/ 				var promise;
 /******/ 				if(importObject instanceof Promise && typeof WebAssembly.compileStreaming === 'function') {
 /******/ 					promise = Promise.all([WebAssembly.compileStreaming(req), importObject]).then(function(items) {
