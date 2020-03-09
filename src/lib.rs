@@ -51,7 +51,7 @@ pub struct Universe {
 impl Universe {
     pub fn new(canvas_name: String, width: u32, height: u32) -> Self {
         let cells = (0..width * height)
-            .map(|i| Cell::Dead)
+            .map(|_| Cell::Dead)
             .collect();
 
         let document = web_sys::window().unwrap().document().unwrap();
@@ -131,6 +131,17 @@ impl Universe {
     pub fn set_dead(&mut self, row: u32, column: u32) {
         let idx = self.get_index(row, column);
         self.cells[idx].set_dead();
+    }
+
+    pub fn randomize_cells(&mut self) {
+        let cells = (0..self.width * self.height)
+            .map(|_| if js_sys::Math::random() < 0.5 {
+                Cell::Dead
+            } else {
+                Cell::Alive
+            })
+            .collect();
+        self.cells = cells;
     }
 
     pub fn tick(&mut self) -> bool {

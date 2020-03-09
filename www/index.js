@@ -42,7 +42,7 @@ canvas.addEventListener("mousemove", event => {
 	universe.draw_cells();
 });
 
-const createCanvasBtn = document.getElementById("CreateCanvas");
+const createCanvasBtn = document.getElementById("create-canvas-btn");
 function createUniverse() {
 	const widthField = document.getElementById("CanvasWidth");
 	const width = widthField.value;
@@ -64,6 +64,19 @@ createCanvasBtn.addEventListener("click", event => {
 	createUniverse();
 });
 
+const randomizeBtn = document.getElementById("randomize-btn");
+function randomizeCells() {
+	if (universe === null) {
+		alert("No board has been created yet");
+		return;
+	}
+	universe.randomize_cells();
+	universe.draw_cells();
+}
+randomizeBtn.addEventListener("click", event => {
+	randomizeCells();
+});
+
 let animationId = null;
 
 let paused = true;
@@ -75,6 +88,7 @@ const isPaused = () => {
 
 const play = () => {
 	if (universe === null) {
+		alert("No board has been created yet");
 		return;
 	}
 	interval = document.getElementById("CanvasUpdateInterval").value;
@@ -105,7 +119,7 @@ const renderLoop = () => {
 	}, interval);
 };
 
-const playPauseButton = document.getElementById("play-pause");
+const playPauseButton = document.getElementById("play-pause-btn");
 playPauseButton.textContent = "Play";
 playPauseButton.addEventListener("click", event => {
 	if (isPaused()) {

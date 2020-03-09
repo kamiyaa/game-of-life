@@ -10,6 +10,7 @@ export function universe_cells(a: number): number;
 export function universe_toggle_cell(a: number, b: number, c: number): void;
 export function universe_set_alive(a: number, b: number, c: number): void;
 export function universe_set_dead(a: number, b: number, c: number): void;
+export function universe_randomize_cells(a: number): void;
 export function universe_tick(a: number): number;
 export function universe_draw_grid(a: number): void;
 export function universe_draw_cells(a: number): void;

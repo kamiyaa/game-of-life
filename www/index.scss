@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
-$font-family: 'IBM Plex Sans', sans-serif;
+$font-family: 'Open Sans', sans-serif;
 
 $body-bg: #141a30;
 $body-bg-hover: #0091E7;
@@ -42,7 +42,7 @@ body {
 		justify-content: space-between;
 	}
 
-	input[type=text], input[type=email], input[type=password] {
+	input[type=text], input[type=number], input[type=email], input[type=password] {
 		flex: 3;
 		font-size: 14px;
 		margin: 0.4rem 0 1rem 0;
@@ -66,4 +66,78 @@ body {
 	font-family: $font-family;
 	margin: 1rem;
 	padding: 40px 40px 40px 40px;
+}
+
+.dark-btn {
+	background-color: #7b32fa;
+	border-radius: 0.4rem;
+	border-width: 0px;
+	box-shadow: 0 0 0.1rem 0.0001rem #999;
+	color: #f0f0f0;
+	letter-spacing: 3px;
+	margin: 0 0.4rem;
+	padding: 0.5rem 0.8rem;
+	text-decoration: none;
+	transition: 0.3s;
+	&:hover {
+		background-color: #9e66ff;
+		box-shadow: 0 0 0.3rem 0.01rem #999;
+	}
+	&:visited {
+		color: #f0f0f0;
+	}
+}
+
+.play-btn {
+	background-color: #04e060;
+	border-radius: 0.4rem;
+	border-width: 0px;
+	box-shadow: 0 0 0.1rem 0.0001rem #999;
+	color: #000;
+	margin: 0 0.4rem;
+	padding: 0.5rem 0.8rem;
+	text-decoration: none;
+	transition: 0.3s;
+	&:hover {
+		background-color: #5ff59e;
+		box-shadow: 0 0 0.3rem 0.01rem #999;
+	}
+	&:visited {
+		color: #f0f0f0;
+	}
+}
+
+.create-btn {
+	background-color: #ffb238;
+	border-radius: 0.4rem;
+	border-width: 0px;
+	box-shadow: 0 0 0.1rem 0.0001rem #999;
+	color: #000;
+	margin: 0 0.4rem;
+	padding: 0.5rem 0.8rem;
+	text-decoration: none;
+	transition: 0.3s;
+	&:hover {
+		background-color: #ffc466;
+		box-shadow: 0 0 0.3rem 0.01rem #999;
+	}
+	&:visited {
+		color: #f0f0f0;
+	}
+}
+
+.randomize-btn {
+	background-color: #aaa;
+	border-radius: 0.4rem;
+	border-width: 0px;
+	box-shadow: 0 0 0.1rem 0.0001rem #999;
+	color: #000;
+	margin: 0 0.4rem;
+	padding: 0.5rem 0.8rem;
+	text-decoration: none;
+	transition: 0.3s;
+	&:hover {
+		background-color: #ddd;
+		box-shadow: 0 0 0.3rem 0.01rem #999;
+	}
 }

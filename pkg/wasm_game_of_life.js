@@ -184,6 +184,8 @@ function isLikeNone(x) {
 function handleError(e) {
     wasm.__wbindgen_exn_store(addHeapObject(e));
 }
+
+function notDefined(what) { return () => { throw new Error(`${what} is not defined`); }; }
 /**
 */
 export const Cell = Object.freeze({ Dead:0,Alive:1, });
@@ -270,6 +272,11 @@ export class Universe {
     */
     set_dead(row, column) {
         wasm.universe_set_dead(this.ptr, row, column);
+    }
+    /**
+    */
+    randomize_cells() {
+        wasm.universe_randomize_cells(this.ptr);
     }
     /**
     * @returns {boolean}
@@ -416,6 +423,8 @@ export const __wbindgen_object_clone_ref = function(arg0) {
     var ret = getObject(arg0);
     return addHeapObject(ret);
 };
+
+export const __wbg_random_c39492311093f0a8 = typeof Math.random == 'function' ? Math.random : notDefined('Math.random');
 
 export const __wbindgen_debug_string = function(arg0, arg1) {
     var ret = debugString(getObject(arg1));

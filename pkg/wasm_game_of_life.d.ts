@@ -47,6 +47,9 @@ export class Universe {
 */
   set_dead(row: number, column: number): void;
 /**
+*/
+  randomize_cells(): void;
+/**
 * @returns {boolean} 
 */
   tick(): boolean;
