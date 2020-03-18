@@ -2,6 +2,8 @@
 
 A simple game of life game written with Rust, WebAssembly and Javascript.
 
+![Alt text](screenshot.png?raw=true "game-of-life")
+
 ## Rust/WebAssembly
 
 ### Building

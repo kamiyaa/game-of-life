@@ -188,7 +188,70 @@ function handleError(e) {
 function notDefined(what) { return () => { throw new Error(`${what} is not defined`); }; }
 /**
 */
-export const Cell = Object.freeze({ Dead:0,Alive:1, });
+export const Cell = Object.freeze({ Dead:0,Alive:1,RecentlyDead:2, });
+/**
+*/
+export class Color {
+
+    free() {
+        const ptr = this.ptr;
+        this.ptr = 0;
+
+        wasm.__wbg_color_free(ptr);
+    }
+    /**
+    * @returns {string}
+    */
+    static grid_color() {
+        try {
+            wasm.color_grid_color(8);
+            var r0 = getInt32Memory0()[8 / 4 + 0];
+            var r1 = getInt32Memory0()[8 / 4 + 1];
+            return getStringFromWasm0(r0, r1);
+        } finally {
+            wasm.__wbindgen_free(r0, r1);
+        }
+    }
+    /**
+    * @returns {string}
+    */
+    static alive_color() {
+        try {
+            wasm.color_alive_color(8);
+            var r0 = getInt32Memory0()[8 / 4 + 0];
+            var r1 = getInt32Memory0()[8 / 4 + 1];
+            return getStringFromWasm0(r0, r1);
+        } finally {
+            wasm.__wbindgen_free(r0, r1);
+        }
+    }
+    /**
+    * @returns {string}
+    */
+    static dead_color() {
+        try {
+            wasm.color_dead_color(8);
+            var r0 = getInt32Memory0()[8 / 4 + 0];
+            var r1 = getInt32Memory0()[8 / 4 + 1];
+            return getStringFromWasm0(r0, r1);
+        } finally {
+            wasm.__wbindgen_free(r0, r1);
+        }
+    }
+    /**
+    * @returns {string}
+    */
+    static recently_dead_color() {
+        try {
+            wasm.color_recently_dead_color(8);
+            var r0 = getInt32Memory0()[8 / 4 + 0];
+            var r1 = getInt32Memory0()[8 / 4 + 1];
+            return getStringFromWasm0(r0, r1);
+        } finally {
+            wasm.__wbindgen_free(r0, r1);
+        }
+    }
+}
 /**
 */
 export class Universe {

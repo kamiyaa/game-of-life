@@ -1,9 +1,15 @@
-import { Universe, Cell } from "wasm-game-of-life";
+import { Universe, Cell, Color } from "wasm-game-of-life";
 import { memory } from "wasm-game-of-life/wasm_game_of_life_bg";
 
 import "./index.scss";
 
 const CELL_SIZE = 15 | 0;
+
+{
+	document.getElementById("AliveCellColor").style.backgroundColor = Color.alive_color();
+	document.getElementById("RecentlyDeadCellColor").style.backgroundColor = Color.recently_dead_color();
+	document.getElementById("DeadCellColor").style.backgroundColor = Color.dead_color();
+}
 
 const canvas = document.getElementById("game-of-life-canvas");
 const ctx = canvas.getContext('2d');

@@ -5,6 +5,26 @@
 export enum Cell {
   Dead,
   Alive,
+  RecentlyDead,
+}
+export class Color {
+  free(): void;
+/**
+* @returns {string} 
+*/
+  static grid_color(): string;
+/**
+* @returns {string} 
+*/
+  static alive_color(): string;
+/**
+* @returns {string} 
+*/
+  static dead_color(): string;
+/**
+* @returns {string} 
+*/
+  static recently_dead_color(): string;
 }
 export class Universe {
   free(): void;
