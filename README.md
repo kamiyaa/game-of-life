@@ -1,5 +1,7 @@
 # Game of Life
 
+[https://kamiyaa.github.io/game-of-life/](https://kamiyaa.github.io/game-of-life/)
+
 A simple game of life game written with Rust, WebAssembly and Javascript.
 
 ![Alt text](screenshot.png?raw=true "game-of-life")
